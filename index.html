@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaCraft Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-main: #f4f1ea;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --ink: #22211f;
+      --muted: #5f5a53;
+      --accent: #0d8a72;
+      --ring: rgba(13, 138, 114, 0.25);
+      --shadow: 0 18px 40px rgba(24, 29, 27, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 5% 8%, rgba(244, 162, 89, 0.38), transparent 30%),
+        radial-gradient(circle at 92% 12%, rgba(13, 138, 114, 0.3), transparent 26%),
+        linear-gradient(135deg, #fdfbf7 0%, #f4f1ea 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      padding: 28px 0 80px;
+    }
+
+    .hero {
+      margin-top: 10px;
+      padding: 78px clamp(20px, 5vw, 68px);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.62)),
+        linear-gradient(135deg, rgba(13, 138, 114, 0.05), rgba(244, 162, 89, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      animation: rise 0.8s ease-out both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(13, 138, 114, 0.2);
+      background: rgba(13, 138, 114, 0.08);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #0a6f5c;
+    }
+
+    .hero h1 {
+      margin-top: 18px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.08;
+      max-width: 11.5ch;
+    }
+
+    .hero p {
+      margin-top: 16px;
+      max-width: 56ch;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 14px;
+      padding: 12px 22px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(120deg, #0d8a72, #0c7762);
+      box-shadow: 0 12px 26px rgba(13, 138, 114, 0.28);
+    }
+
+    .btn-secondary {
+      color: #2f2d29;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(34, 33, 31, 0.12);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .services {
+      margin-top: 34px;
+      padding: 48px clamp(20px, 4vw, 46px);
+      border-radius: var(--radius-xl);
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+      animation: rise 0.8s ease-out 0.18s both;
+    }
+
+    .services-head h2 {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.15;
+    }
+
+    .services-head p {
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 65ch;
+    }
+
+    .grid {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(34, 33, 31, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--ring);
+      box-shadow: 0 16px 30px rgba(18, 24, 22, 0.12);
+    }
+
+    .card h3 {
+      font-family: "Sora", sans-serif;
+      font-size: 1.16rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .card strong {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--accent);
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 18px 0 44px;
+      }
+
+      .hero {
+        padding: 48px 18px;
+      }
+
+      .services {
+        padding: 36px 18px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" id="hero">
+      <span class="eyebrow">Creative Digital Partner</span>
+      <h1>Build a modern brand experience your audience remembers.</h1>
+      <p>
+        We help startups and growing businesses turn ideas into polished digital products.
+        From strategy to launch, every screen is designed to feel premium, fast, and clear.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#services">Explore Services</a>
+        <a class="btn btn-secondary" href="#">Book Free Consultation</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="services-head">
+        <h2>Services That Move Your Business Forward</h2>
+        <p>
+          We combine design, technology, and growth thinking so your website is not just beautiful,
+          but also focused on conversions and real business impact.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Brand-First UI/UX Design</h3>
+          <p>Complete interface systems that match your identity and guide users to take action naturally.</p>
+          <strong>Design System</strong>
+        </article>
+        <article class="card">
+          <h3>High-Performance Web Development</h3>
+          <p>Responsive websites with clean code, smooth interactions, and optimized loading speed.</p>
+          <strong>Fast & Scalable</strong>
+        </article>
+        <article class="card">
+          <h3>Conversion Growth Optimization</h3>
+          <p>Landing page improvements, messaging clarity, and data-led tweaks to increase qualified leads.</p>
+          <strong>ROI Focused</strong>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
