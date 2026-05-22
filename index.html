@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<hea
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NovaCraft Studio</title>
@@ -119,67 +119,89 @@
     }
 
     .services {
-      margin-top: 34px;
-      padding: 48px clamp(20px, 4vw, 46px);
+      margin-top: 52px;
+      padding: clamp(28px, 4.5vw, 44px);
       border-radius: var(--radius-xl);
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(8px);
+      border: 1px solid rgba(13, 138, 114, 0.16);
+      background:
+        radial-gradient(circle at 8% 14%, rgba(13, 138, 114, 0.14), transparent 38%),
+        radial-gradient(circle at 90% 84%, rgba(244, 162, 89, 0.2), transparent 38%),
+        linear-gradient(148deg, #f9f5ed 0%, #f2ece2 100%);
       box-shadow: var(--shadow);
+      overflow: hidden;
       animation: rise 0.8s ease-out 0.18s both;
+    }
+
+    .services-inner {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 28px;
+    }
+
+    .services-head {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: end;
     }
 
     .services-head h2 {
       font-family: "Sora", sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-size: clamp(1.8rem, 4vw, 3rem);
       line-height: 1.15;
+      max-width: 17ch;
     }
 
     .services-head p {
-      margin-top: 10px;
+      margin-top: 0;
       color: var(--muted);
-      max-width: 65ch;
+      max-width: 58ch;
+      font-size: 1rem;
     }
 
     .grid {
-      margin-top: 26px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 20px;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(34, 33, 31, 0.08);
+      padding: 22px;
       border-radius: var(--radius-lg);
-      padding: 20px;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(34, 33, 31, 0.12);
+      box-shadow: 0 12px 24px rgba(24, 29, 27, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: var(--ring);
-      box-shadow: 0 16px 30px rgba(18, 24, 22, 0.12);
+      box-shadow: 0 16px 28px rgba(24, 29, 27, 0.12);
     }
 
     .card h3 {
       font-family: "Sora", sans-serif;
-      font-size: 1.16rem;
-      margin-bottom: 8px;
+      font-size: 1.28rem;
+      margin-bottom: 10px;
+      line-height: 1.25;
     }
 
     .card p {
       color: var(--muted);
-      font-size: 0.98rem;
+      font-size: 1rem;
     }
 
     .card strong {
       display: inline-block;
-      margin-top: 12px;
+      margin-top: 16px;
       color: var(--accent);
-      font-size: 0.88rem;
-      letter-spacing: 0.04em;
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(13, 138, 114, 0.1);
     }
 
     @keyframes rise {
@@ -194,6 +216,14 @@
     }
 
     @media (max-width: 900px) {
+      .services-head {
+        grid-template-columns: 1fr;
+      }
+
+      .services-head p {
+        margin-top: 4px;
+      }
+
       .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -209,7 +239,8 @@
       }
 
       .services {
-        padding: 36px 18px;
+        margin-top: 36px;
+        padding: 24px 14px;
       }
 
       .grid {
@@ -234,34 +265,34 @@
     </section>
 
     <section class="services" id="services">
-      <div class="services-head">
-        <h2>Services That Move Your Business Forward</h2>
-        <p>
-          We combine design, technology, and growth thinking so your website is not just beautiful,
-          but also focused on conversions and real business impact.
-        </p>
-      </div>
+      <div class="services-inner">
+        <div class="services-head">
+          <h2>Services Built To Grow Your Brand Faster</h2>
+          <p>
+            We craft focused service blocks that blend design quality, performance,
+            and conversion intent so every visitor journey feels smooth and clear.
+          </p>
+        </div>
 
-      <div class="grid">
-        <article class="card">
-          <h3>Brand-First UI/UX Design</h3>
-          <p>Complete interface systems that match your identity and guide users to take action naturally.</p>
-          <strong>Design System</strong>
-        </article>
-        <article class="card">
-          <h3>High-Performance Web Development</h3>
-          <p>Responsive websites with clean code, smooth interactions, and optimized loading speed.</p>
-          <strong>Fast & Scalable</strong>
-        </article>
-        <article class="card">
-          <h3>Conversion Growth Optimization</h3>
-          <p>Landing page improvements, messaging clarity, and data-led tweaks to increase qualified leads.</p>
-          <strong>ROI Focused</strong>
-        </article>
+        <div class="grid">
+          <article class="card">
+            <h3>Strategy-Led UI Design</h3>
+            <p>Purposeful layouts and visual hierarchy that communicate value instantly and build trust fast.</p>
+            <strong>Clarity Driven</strong>
+          </article>
+          <article class="card">
+            <h3>Modern Frontend Build</h3>
+            <p>Responsive, lightweight interfaces engineered for speed, stability, and seamless interaction.</p>
+            <strong>Performance First</strong>
+          </article>
+          <article class="card">
+            <h3>Conversion Flow Tuning</h3>
+            <p>CTA placement, message refinement, and friction removal to turn more visits into real enquiries.</p>
+            <strong>Results Focused</strong>
+          </article>
+        </div>
       </div>
     </section>
   </main>
 </body>
-</html>
->
 </html>
