@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
     :root {
       --bg-main: #f4f1ea;
@@ -35,6 +36,7 @@
         linear-gradient(135deg, #fdfbf7 0%, #f4f1ea 100%);
       min-height: 100vh;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .page {
@@ -163,14 +165,13 @@
 
     .services {
       margin-top: 52px;
-      padding: clamp(28px, 4.5vw, 44px);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(13, 138, 114, 0.16);
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      padding: clamp(56px, 8vw, 92px) clamp(20px, 5vw, 70px);
       background:
-        radial-gradient(circle at 8% 14%, rgba(13, 138, 114, 0.14), transparent 38%),
-        radial-gradient(circle at 90% 84%, rgba(244, 162, 89, 0.2), transparent 38%),
-        linear-gradient(148deg, #f9f5ed 0%, #f2ece2 100%);
-      box-shadow: var(--shadow);
+        linear-gradient(120deg, rgba(14, 22, 29, 0.7), rgba(13, 138, 114, 0.54)),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;
       overflow: hidden;
       animation: rise 0.8s ease-out 0.18s both;
     }
@@ -194,11 +195,12 @@
       font-size: clamp(1.8rem, 4vw, 3rem);
       line-height: 1.15;
       max-width: 17ch;
+      color: #ffffff;
     }
 
     .services-head p {
       margin-top: 0;
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.86);
       max-width: 58ch;
       font-size: 1rem;
     }
@@ -212,9 +214,9 @@
     .card {
       padding: 22px;
       border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.68);
-      border: 1px solid rgba(34, 33, 31, 0.12);
-      box-shadow: 0 12px 24px rgba(24, 29, 27, 0.08);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 22px rgba(6, 19, 16, 0.2);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
@@ -228,6 +230,24 @@
       font-size: 1.28rem;
       margin-bottom: 10px;
       line-height: 1.25;
+    }
+
+    .card-tools {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .card-tools i {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(13, 138, 114, 0.12);
+      color: #0c6b5a;
+      font-size: 0.95rem;
     }
 
     .card p {
@@ -327,16 +347,31 @@
 
         <div class="grid">
           <article class="card">
+            <div class="card-tools">
+              <i class="fa-brands fa-figma" aria-hidden="true"></i>
+              <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+            </div>
             <h3>Strategy-Led UI Design</h3>
             <p>Purposeful layouts and visual hierarchy that communicate value instantly and build trust fast.</p>
             <strong>Clarity Driven</strong>
           </article>
           <article class="card">
+            <div class="card-tools">
+              <i class="fa-brands fa-html5" aria-hidden="true"></i>
+              <i class="fa-brands fa-css3-alt" aria-hidden="true"></i>
+              <i class="fa-brands fa-js" aria-hidden="true"></i>
+            </div>
             <h3>Modern Frontend Build</h3>
             <p>Responsive, lightweight interfaces engineered for speed, stability, and seamless interaction.</p>
             <strong>Performance First</strong>
           </article>
           <article class="card">
+            <div class="card-tools">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+              <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+              <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+            </div>
             <h3>Conversion Flow Tuning</h3>
             <p>CTA placement, message refinement, and friction removal to turn more visits into real enquiries.</p>
             <strong>Results Focused</strong>
