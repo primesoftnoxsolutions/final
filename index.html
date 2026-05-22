@@ -48,12 +48,55 @@
       padding: 78px clamp(20px, 5vw, 68px);
       border-radius: var(--radius-xl);
       background:
-        linear-gradient(120deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.62)),
-        linear-gradient(135deg, rgba(13, 138, 114, 0.05), rgba(244, 162, 89, 0.12));
-      border: 1px solid rgba(255, 255, 255, 0.75);
-      box-shadow: var(--shadow);
+        radial-gradient(circle at 12% 18%, rgba(53, 181, 154, 0.22), transparent 34%),
+        radial-gradient(circle at 88% 14%, rgba(255, 176, 90, 0.2), transparent 30%),
+        linear-gradient(145deg, #171d1b 0%, #101514 60%, #0f1312 100%);
+      border: 1px solid rgba(170, 236, 221, 0.2);
+      box-shadow: 0 22px 46px rgba(5, 8, 7, 0.45);
       backdrop-filter: blur(8px);
       animation: rise 0.8s ease-out both;
+      color: #ecf4f1;
+    }
+
+    .hero-nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .hero-nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(194, 235, 225, 0.25);
+    }
+
+    .hero-nav a {
+      display: inline-block;
+      text-decoration: none;
+      color: #e6f2ee;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 7px 14px;
+      border-radius: 999px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .hero-nav a:hover {
+      background: rgba(94, 207, 183, 0.18);
+      color: #ffffff;
+    }
+
+    .hero .eyebrow {
+      border: 1px solid rgba(145, 219, 201, 0.35);
+      background: rgba(93, 200, 178, 0.16);
+      color: #b8efe2;
     }
 
     .eyebrow {
@@ -83,7 +126,7 @@
       margin-top: 16px;
       max-width: 56ch;
       font-size: clamp(1rem, 2vw, 1.15rem);
-      color: var(--muted);
+      color: #b9c7c2;
     }
 
     .hero-actions {
@@ -252,6 +295,14 @@
 <body>
   <main class="page">
     <section class="hero" id="hero">
+      <nav class="hero-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
       <span class="eyebrow">Creative Digital Partner</span>
       <h1>Build a modern brand experience your audience remembers.</h1>
       <p>
