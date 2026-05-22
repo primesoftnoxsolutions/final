@@ -42,7 +42,7 @@
     .page {
       width: min(1120px, 92%);
       margin: 0 auto;
-      padding: 28px 0 80px;
+      padding: 0 0 80px;
     }
 
     .hero {
@@ -67,6 +67,58 @@
       display: flex;
       justify-content: center;
       margin-bottom: 22px;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .hero-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #ecf4f1;
+      text-decoration: none;
+      font-family: "Sora", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #0d8a72, #31b596);
+      box-shadow: 0 8px 18px rgba(18, 170, 140, 0.35);
+    }
+
+    .hero-cta-animated {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(175, 255, 236, 0.4);
+      background: linear-gradient(120deg, rgba(12, 119, 98, 0.95), rgba(49, 181, 150, 0.95));
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(13, 138, 114, 0.34);
+      animation: pulseGlow 1.8s ease-in-out infinite;
+      transition: transform 0.25s ease;
+    }
+
+    .hero-cta-animated:hover {
+      transform: translateY(-2px);
     }
 
     .hero-nav ul {
@@ -281,6 +333,16 @@
       }
     }
 
+    @keyframes pulseGlow {
+      0%,
+      100% {
+        box-shadow: 0 10px 22px rgba(13, 138, 114, 0.28);
+      }
+      50% {
+        box-shadow: 0 16px 30px rgba(66, 219, 182, 0.48);
+      }
+    }
+
     @media (max-width: 900px) {
       .services-head {
         grid-template-columns: 1fr;
@@ -297,11 +359,16 @@
 
     @media (max-width: 640px) {
       .page {
-        padding: 18px 0 44px;
+        padding: 0 0 44px;
       }
 
       .hero {
         padding: 48px 18px;
+      }
+
+      .hero-top {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .services {
@@ -318,6 +385,16 @@
 <body>
   <main class="page">
     <section class="hero" id="hero">
+      <div class="hero-top">
+        <a class="hero-logo" href="#hero" aria-label="NovaCraft Studio home">
+          <span class="hero-logo-mark">N</span>
+          <span>NovaCraft</span>
+        </a>
+        <a class="hero-cta-animated" href="#services">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          Start Project
+        </a>
+      </div>
       <nav class="hero-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#hero">Home</a></li>
