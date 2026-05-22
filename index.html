@@ -322,115 +322,99 @@
       background: rgba(13, 138, 114, 0.1);
     }
 
-    .vision {
+    .reviews {
       margin-top: 0;
       width: 100vw;
       margin-left: calc(50% - 50vw);
       margin-right: calc(50% - 50vw);
       padding: clamp(56px, 9vw, 96px) clamp(20px, 5vw, 72px);
       background:
-        radial-gradient(circle at 10% 12%, rgba(53, 181, 154, 0.24), transparent 32%),
-        radial-gradient(circle at 88% 80%, rgba(255, 176, 90, 0.18), transparent 34%),
-        linear-gradient(145deg, #171d1b 0%, #101514 60%, #0f1312 100%);
+        radial-gradient(circle at 8% 12%, rgba(53, 181, 154, 0.2), transparent 34%),
+        radial-gradient(circle at 90% 82%, rgba(255, 176, 90, 0.16), transparent 36%),
+        linear-gradient(145deg, #161c1a 0%, #101514 62%, #0f1312 100%);
       border-top: 1px solid rgba(170, 236, 221, 0.2);
       border-bottom: 1px solid rgba(170, 236, 221, 0.14);
     }
 
-    .vision-inner {
-      width: min(1120px, 100%);
+    .reviews-inner {
+      width: min(1140px, 100%);
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: stretch;
     }
 
-    .vision-copy h2 {
+    .reviews-head {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .reviews-head h2 {
       font-family: "Sora", sans-serif;
-      font-size: clamp(1.9rem, 4.4vw, 3.2rem);
-      line-height: 1.1;
-      max-width: 13ch;
+      font-size: clamp(1.85rem, 4.2vw, 3rem);
+      line-height: 1.12;
+      max-width: 16ch;
       color: #ecf4f1;
     }
 
-    .vision-copy p {
-      margin-top: 16px;
-      max-width: 58ch;
+    .reviews-head p {
       color: #b9c7c2;
-      font-size: clamp(0.98rem, 1.5vw, 1.06rem);
+      font-size: 1rem;
+      max-width: 60ch;
     }
 
-    .vision-points {
-      margin-top: 26px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .vision-point {
-      padding: 14px 15px;
-      border-radius: 14px;
-      border: 1px solid rgba(170, 236, 221, 0.24);
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(5px);
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #def3ed;
-    }
-
-    .vision-card {
-      padding: clamp(22px, 3vw, 28px);
-      border-radius: 24px;
-      background: linear-gradient(145deg, rgba(15, 99, 82, 0.7), rgba(10, 65, 55, 0.78));
-      border: 1px solid rgba(170, 236, 221, 0.24);
-      color: #f7fff9;
-      box-shadow: 0 18px 34px rgba(5, 8, 7, 0.36);
-      backdrop-filter: blur(7px);
-      display: grid;
-      gap: 18px;
-      align-content: center;
-    }
-
-    .vision-tag {
-      display: inline-flex;
-      width: fit-content;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(206, 245, 236, 0.3);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .vision-card h3 {
-      font-family: "Sora", sans-serif;
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      line-height: 1.25;
-    }
-
-    .vision-card p {
-      color: rgba(247, 255, 249, 0.9);
-      font-size: 0.98rem;
-      line-height: 1.65;
-    }
-
-    .vision-metrics {
+    .reviews-grid {
+      margin-top: 28px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 6px;
+      gap: 18px;
     }
 
-    .vision-metrics span {
-      padding: 11px 9px;
-      border-radius: 11px;
-      background: rgba(255, 255, 255, 0.09);
-      border: 1px solid rgba(206, 245, 236, 0.24);
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.88rem;
+    .review-card {
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(184, 237, 225, 0.24);
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+      backdrop-filter: blur(6px);
+      color: #e9f5f1;
+      box-shadow: 0 14px 26px rgba(4, 12, 10, 0.26);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 6px;
+      color: #ffd27a;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .review-card p {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: #d2e2dd;
+    }
+
+    .review-meta {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(190, 239, 228, 0.18);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .reviewer {
+      font-family: "Sora", sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #f4fffb;
+    }
+
+    .company {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #9ed8ca;
     }
 
     @keyframes rise {
@@ -467,8 +451,12 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .vision-inner {
+      .reviews-head {
         grid-template-columns: 1fr;
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -495,16 +483,12 @@
         grid-template-columns: 1fr;
       }
 
-      .vision {
+      .reviews {
         margin-top: 0;
         padding: 44px 14px;
       }
 
-      .vision-points {
-        grid-template-columns: 1fr;
-      }
-
-      .vision-metrics {
+      .reviews-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -588,35 +572,71 @@
       </div>
     </section>
 
-    <section class="vision" id="vision">
-      <div class="vision-inner">
-        <div class="vision-copy">
-          <h2>Our Vision Is To Shape Brands People Trust</h2>
+    <section class="reviews" id="reviews">
+      <div class="reviews-inner">
+        <div class="reviews-head">
+          <h2>What Our Customers Say About Working With NovaCraft</h2>
           <p>
-            We imagine a digital world where every brand feels human, clear, and memorable.
-            Our vision is to blend creativity with smart execution so businesses can grow with confidence and consistency.
+            Real client feedback from teams who trusted us with design, development,
+            and conversion-focused improvements across their digital products.
           </p>
-
-          <div class="vision-points">
-            <div class="vision-point">Human-Centered Product Thinking</div>
-            <div class="vision-point">Elegant & Scalable Design Systems</div>
-            <div class="vision-point">Fast, Accessible Web Experiences</div>
-            <div class="vision-point">Long-Term Growth Partnerships</div>
-          </div>
         </div>
-`
-        <aside class="vision-card">
-          <span class="vision-tag">Vision 2030</span>
-          <h3>Build Meaningful Digital Experiences That Inspire Action</h3>
-          <p>
-            Every interface we craft should reduce friction, increase trust, and create value for both brands and users at every touchpoint.
-          </p>
-          <div class="vision-metrics">
-            <span>Clarity</span>
-            <span>Impact</span>
-            <span>Trust</span>
-          </div>
-        </aside>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <p>
+              "Our new website feels premium and converts much better. Their process was clear,
+              fast, and extremely professional from start to launch."
+            </p>
+            <div class="review-meta">
+              <span class="reviewer">Ayesha R.</span>
+              <span class="company">BloomCart</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <p>
+              "They transformed our messy flow into a polished experience. Load speed improved,
+              bounce rate dropped, and leads increased within weeks."
+            </p>
+            <div class="review-meta">
+              <span class="reviewer">Hassan M.</span>
+              <span class="company">Nexora Labs</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <p>
+              "Design quality, communication, and delivery speed were all top-tier.
+              We now have a brand presence that finally matches our product quality."
+            </p>
+            <div class="review-meta">
+              <span class="reviewer">Sara K.</span>
+              <span class="company">OrbitPay</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   </main>
