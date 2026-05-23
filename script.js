@@ -1,6 +1,14 @@
 const USERS_KEY = "novacraft_users";
 const ACTIVE_USER_KEY = "novacraft_active_user";
 
+const authModal = document.getElementById("authModal");
+const signinForm = document.getElementById("signinForm");
+const signupForm = document.getElementById("signupForm");
+const signinMessage = document.getElementById("signinMessage");
+const signupMessage = document.getElementById("signupMessage");
+const signedInBadge = document.getElementById("signedInBadge");
+const logoutBtn = document.getElementById("logoutBtn");
+
 function getUsers() {
   try {
     const rawUsers = localStorage.getItem(USERS_KEY);
@@ -12,6 +20,23 @@ function getUsers() {
 
 function saveUsers(users) {
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+function getActiveUser() {
+  try {
+    const raw = localStorage.getItem(ACTIVE_USER_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function setActiveUser(user) {
+  localStorage.setItem(ACTIVE_USER_KEY, JSON.stringify(user));
+}
+
+function clearActiveUser() {
+  localStorage.removeItem(ACTIVE_USER_KEY);
 }
 
 function showMessage(element, text, type) {
@@ -27,14 +52,115 @@ function showMessage(element, text, type) {
   }
 }
 
+function clearMessages() {
+  showMessage(signinMessage, "", "");
+  showMessage(signupMessage, "", "");
+}
+
 function emailExists(users, email) {
   return users.some((user) => user.email.toLowerCase() === email.toLowerCase());
 }
 
-function setupSignup() {
-  const signupForm = document.getElementById("signupForm");
-  const signupMessage = document.getElementById("signupMessage");
+function setAuthView(view) {
+  const tabs = document.querySelectorAll(".auth-tab");
+  const panels = document.querySelectorAll("[data-auth-panel]");
 
+  tabs.forEach((tab) => {
+    const isActive = tab.dataset.authView === view;
+    tab.classList.toggle("active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  panels.forEach((panel) => {
+    const shouldShow = panel.dataset.authPanel === view;
+    panel.classList.toggle("hidden", !shouldShow);
+  });
+
+  clearMessages();
+}
+
+function openAuthModal(view = "signin") {
+  if (!authModal) {
+    return;
+  }
+
+  setAuthView(view);
+  authModal.classList.add("is-open");
+  authModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeAuthModal() {
+  if (!authModal) {
+    return;
+  }
+
+  authModal.classList.remove("is-open");
+  authModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  clearMessages();
+}
+
+function renderAuthState() {
+  const user = getActiveUser();
+  const guestItems = document.querySelectorAll("[data-auth='guest']");
+  const userItems = document.querySelectorAll("[data-auth='user']");
+
+  guestItems.forEach((item) => item.classList.toggle("hidden", Boolean(user)));
+  userItems.forEach((item) => item.classList.toggle("hidden", !user));
+
+  if (signedInBadge) {
+    if (user?.name) {
+      signedInBadge.textContent = `Signed in as ${user.name}`;
+      signedInBadge.classList.remove("hidden");
+    } else {
+      signedInBadge.textContent = "";
+      signedInBadge.classList.add("hidden");
+    }
+  }
+}
+
+function setupModalControls() {
+  if (!authModal) {
+    return;
+  }
+
+  const openers = document.querySelectorAll("[data-open-auth]");
+  const closers = document.querySelectorAll("[data-close-auth]");
+  const switchers = document.querySelectorAll("[data-switch-auth]");
+  const tabs = document.querySelectorAll(".auth-tab");
+
+  openers.forEach((opener) => {
+    opener.addEventListener("click", () => {
+      const requestedView = opener.dataset.openAuth || "signin";
+      openAuthModal(requestedView);
+    });
+  });
+
+  closers.forEach((closer) => {
+    closer.addEventListener("click", closeAuthModal);
+  });
+
+  switchers.forEach((switcher) => {
+    switcher.addEventListener("click", () => {
+      setAuthView(switcher.dataset.switchAuth || "signin");
+    });
+  });
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      setAuthView(tab.dataset.authView || "signin");
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && authModal.classList.contains("is-open")) {
+      closeAuthModal();
+    }
+  });
+}
+
+function setupSignup() {
   if (!signupForm) {
     return;
   }
@@ -73,19 +199,16 @@ function setupSignup() {
     users.push({ name, email, password, createdAt: new Date().toISOString() });
     saveUsers(users);
 
-    showMessage(signupMessage, "Account created. Redirecting to sign in...", "success");
+    showMessage(signupMessage, "Account created. Please sign in.", "success");
     signupForm.reset();
 
     setTimeout(() => {
-      window.location.href = "signin.html";
-    }, 1200);
+      setAuthView("signin");
+    }, 700);
   });
 }
 
 function setupSignin() {
-  const signinForm = document.getElementById("signinForm");
-  const signinMessage = document.getElementById("signinMessage");
-
   if (!signinForm) {
     return;
   }
@@ -112,45 +235,32 @@ function setupSignin() {
       return;
     }
 
-    sessionStorage.setItem(ACTIVE_USER_KEY, JSON.stringify({ name: user.name, email: user.email }));
-    showMessage(signinMessage, `Welcome, ${user.name}. Redirecting to home...`, "success");
+    setActiveUser({ name: user.name, email: user.email });
+    renderAuthState();
+    showMessage(signinMessage, `Welcome, ${user.name}.`, "success");
+    signinForm.reset();
 
     setTimeout(() => {
-      window.location.href = "index.html";
-    }, 1200);
+      closeAuthModal();
+    }, 700);
   });
 }
 
-function setupHomeGreeting() {
-  const activeUserRaw = sessionStorage.getItem(ACTIVE_USER_KEY);
-
-  if (!activeUserRaw) {
+function setupLogout() {
+  if (!logoutBtn) {
     return;
   }
 
-  let activeUser;
-
-  try {
-    activeUser = JSON.parse(activeUserRaw);
-  } catch (error) {
-    sessionStorage.removeItem(ACTIVE_USER_KEY);
-    return;
-  }
-
-  const heroActions = document.querySelector(".hero-actions");
-
-  if (!heroActions || !activeUser?.name) {
-    return;
-  }
-
-  const message = document.createElement("p");
-  message.className = "eyebrow";
-  message.textContent = `Signed in as ${activeUser.name}`;
-  heroActions.appendChild(message);
+  logoutBtn.addEventListener("click", () => {
+    clearActiveUser();
+    renderAuthState();
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  setupModalControls();
   setupSignup();
   setupSignin();
-  setupHomeGreeting();
+  setupLogout();
+  renderAuthState();
 });
