@@ -364,39 +364,74 @@ body.modal-open {
 }
 
 .reviews-inner {
-  width: min(1140px, 100%);
+  width: 100%;
   margin: 0 auto;
+  padding-inline: clamp(8px, 2vw, 20px);
 }
 
 .reviews-head {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
   align-items: end;
+  margin: 0 auto;
+  width: min(1360px, 100%);
 }
 
 .reviews-head h2 {
   font-family: "Sora", sans-serif;
-  font-size: clamp(1.85rem, 4.2vw, 3rem);
-  line-height: 1.12;
-  max-width: 16ch;
+  font-size: clamp(2rem, 4.8vw, 4rem);
+  line-height: 1.06;
+  max-width: 14ch;
   color: #ecf4f1;
+  letter-spacing: -0.02em;
 }
 
 .reviews-head p {
   color: #b9c7c2;
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
   max-width: 60ch;
 }
 
-.reviews-grid {
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.reviews-summary {
+  margin: 18px auto 0;
+  width: min(1360px, 100%);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reviews-summary span {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(188, 238, 227, 0.26);
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbe4dd;
+  font-size: 0.88rem;
+}
+
+.reviews-summary strong {
+  color: #f5fff9;
+  font-family: "Sora", sans-serif;
+}
+
+.reviews-marquee {
+  margin-top: 26px;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.reviews-track {
+  display: flex;
+  width: max-content;
+  animation: reviewsScroll 26s linear infinite;
   gap: 18px;
 }
 
 .review-card {
+  width: min(340px, 78vw);
+  flex: 0 0 auto;
   padding: 22px;
   border-radius: 20px;
   border: 1px solid rgba(184, 237, 225, 0.24);
@@ -642,6 +677,15 @@ body.modal-open {
   }
 }
 
+@keyframes reviewsScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 9px));
+  }
+}
+
 @media (max-width: 900px) {
   .site-navbar {
     grid-template-columns: 1fr;
@@ -668,10 +712,11 @@ body.modal-open {
 
   .reviews-head {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .reviews-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .about-novacraft-inner {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -721,8 +766,20 @@ body.modal-open {
     padding: 44px 14px;
   }
 
-  .reviews-grid {
-    grid-template-columns: 1fr;
+  .reviews-track {
+    animation-duration: 32s;
+  }
+
+  .reviews-summary {
+    gap: 8px;
+  }
+
+  .review-card {
+    width: min(300px, 82vw);
+  }
+
+  .about-novacraft {
+    padding: 44px 14px;
   }
 
   .auth-modal-card {
