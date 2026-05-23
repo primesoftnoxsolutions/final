@@ -355,39 +355,74 @@ body {
 }
 
 .reviews-inner {
-  width: min(1140px, 100%);
+  width: 100%;
   margin: 0 auto;
+  padding-inline: clamp(8px, 2vw, 20px);
 }
 
 .reviews-head {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
   align-items: end;
+  margin: 0 auto;
+  width: min(1360px, 100%);
 }
 
 .reviews-head h2 {
   font-family: "Sora", sans-serif;
-  font-size: clamp(1.85rem, 4.2vw, 3rem);
-  line-height: 1.12;
-  max-width: 16ch;
+  font-size: clamp(2rem, 4.8vw, 4rem);
+  line-height: 1.06;
+  max-width: 14ch;
   color: #ecf4f1;
+  letter-spacing: -0.02em;
 }
 
 .reviews-head p {
   color: #b9c7c2;
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
   max-width: 60ch;
 }
 
-.reviews-grid {
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.reviews-summary {
+  margin: 18px auto 0;
+  width: min(1360px, 100%);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reviews-summary span {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(188, 238, 227, 0.26);
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbe4dd;
+  font-size: 0.88rem;
+}
+
+.reviews-summary strong {
+  color: #f5fff9;
+  font-family: "Sora", sans-serif;
+}
+
+.reviews-marquee {
+  margin-top: 26px;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.reviews-track {
+  display: flex;
+  width: max-content;
+  animation: reviewsScroll 26s linear infinite;
   gap: 18px;
 }
 
 .review-card {
+  width: min(340px, 78vw);
+  flex: 0 0 auto;
   padding: 22px;
   border-radius: 20px;
   border: 1px solid rgba(184, 237, 225, 0.24);
@@ -433,6 +468,78 @@ body {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #9ed8ca;
+}
+
+.about-novacraft {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: clamp(56px, 9vw, 94px) clamp(20px, 5vw, 72px);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(73, 198, 171, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 86%, rgba(242, 176, 96, 0.14), transparent 36%),
+    linear-gradient(140deg, #f7f3eb 0%, #efe7da 100%);
+}
+
+.about-novacraft-inner {
+  width: min(1140px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.about-copy h2 {
+  margin-top: 14px;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+  line-height: 1.15;
+  max-width: 18ch;
+}
+
+.about-copy p {
+  margin-top: 14px;
+  max-width: 58ch;
+  color: #5a5550;
+  font-size: 1.02rem;
+}
+
+.about-pillars {
+  display: grid;
+  gap: 14px;
+}
+
+.pillar {
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(34, 33, 31, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 20px rgba(24, 29, 27, 0.08);
+}
+
+.pillar i {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 138, 114, 0.12);
+  color: #0c6b5a;
+}
+
+.pillar h3 {
+  margin-top: 10px;
+  font-family: "Sora", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.pillar p {
+  margin-top: 8px;
+  color: #5f5a53;
+  font-size: 0.98rem;
 }
 
 .auth-page {
@@ -543,6 +650,15 @@ body {
   }
 }
 
+@keyframes reviewsScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 9px));
+  }
+}
+
 @media (max-width: 900px) {
   .site-navbar {
     grid-template-columns: 1fr;
@@ -569,10 +685,11 @@ body {
 
   .reviews-head {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .reviews-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .about-novacraft-inner {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -607,8 +724,20 @@ body {
     padding: 44px 14px;
   }
 
-  .reviews-grid {
-    grid-template-columns: 1fr;
+  .reviews-track {
+    animation-duration: 32s;
+  }
+
+  .reviews-summary {
+    gap: 8px;
+  }
+
+  .review-card {
+    width: min(300px, 82vw);
+  }
+
+  .about-novacraft {
+    padding: 44px 14px;
   }
 
   .auth-card {
