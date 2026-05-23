@@ -28,15 +28,8 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#reviews">Reviews</a></li>
-          <li data-auth="guest">
-            <button type="button" class="nav-auth-btn" data-open-auth="signin">Sign In</button>
-          </li>
-          <li data-auth="guest">
-            <button type="button" class="nav-auth-btn" data-open-auth="signup">Sign Up</button>
-          </li>
-          <li data-auth="user" class="hidden">
-            <button type="button" id="logoutBtn" class="nav-auth-btn nav-auth-logout">Logout</button>
-          </li>
+          <li><a href="signin.html">Sign In</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
         </ul>
       </nav>
       <span class="eyebrow">Creative Digital Partner</span>
@@ -47,8 +40,7 @@
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#services">Explore Services</a>
-        <button type="button" class="btn btn-secondary" data-open-auth="signup" data-auth="guest">Book Free Consultation</button>
-        <p id="signedInBadge" class="eyebrow hidden"></p>
+        <a class="btn btn-secondary" href="signup.html">Book Free Consultation</a>
       </div>
     </section>
 
@@ -165,72 +157,6 @@
       </div>
     </section>
   </main>
-
-  <div id="authModal" class="auth-modal" aria-hidden="true">
-    <button type="button" class="auth-modal-backdrop" data-close-auth aria-label="Close authentication popup"></button>
-    <section class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-      <button type="button" class="auth-close" data-close-auth aria-label="Close">&times;</button>
-
-      <div class="auth-tabs" role="tablist" aria-label="Authentication tabs">
-        <button type="button" class="auth-tab active" data-auth-view="signin" role="tab" aria-selected="true">Sign In</button>
-        <button type="button" class="auth-tab" data-auth-view="signup" role="tab" aria-selected="false">Sign Up</button>
-      </div>
-
-      <div class="auth-panel" data-auth-panel="signin">
-        <h2 id="authTitle">Welcome Back</h2>
-        <p class="auth-subtext">Login karein aur apna project dashboard access karein.</p>
-
-        <form id="signinForm" class="auth-form" novalidate>
-          <div class="input-group">
-            <label for="signinEmail">Email Address</label>
-            <input id="signinEmail" name="email" type="email" autocomplete="email" required />
-          </div>
-
-          <div class="input-group">
-            <label for="signinPassword">Password</label>
-            <input id="signinPassword" name="password" type="password" autocomplete="current-password" required />
-          </div>
-
-          <button class="btn btn-primary" type="submit">Sign In</button>
-        </form>
-
-        <p id="signinMessage" class="form-message" role="status" aria-live="polite"></p>
-        <p class="auth-foot">New user? <button type="button" class="auth-switch" data-switch-auth="signup">Create account</button></p>
-      </div>
-
-      <div class="auth-panel hidden" data-auth-panel="signup">
-        <h2>Create Account</h2>
-        <p class="auth-subtext">NovaCraft par account bana kar journey start karein.</p>
-
-        <form id="signupForm" class="auth-form" novalidate>
-          <div class="input-group">
-            <label for="signupName">Full Name</label>
-            <input id="signupName" name="name" type="text" autocomplete="name" required />
-          </div>
-
-          <div class="input-group">
-            <label for="signupEmail">Email Address</label>
-            <input id="signupEmail" name="email" type="email" autocomplete="email" required />
-          </div>
-
-          <div class="input-group">
-            <label for="signupPassword">Password</label>
-            <input id="signupPassword" name="password" type="password" minlength="6" autocomplete="new-password" required />
-          </div>
-
-          <div class="input-group">
-            <label for="signupConfirmPassword">Confirm Password</label>
-            <input id="signupConfirmPassword" name="confirmPassword" type="password" minlength="6" autocomplete="new-password" required />
-          </div>
-
-          <button class="btn btn-primary" type="submit">Sign Up</button>
-        </form>
-
-        <p id="signupMessage" class="form-message" role="status" aria-live="polite"></p>
-        <p class="auth-foot">Already have an account? <button type="button" class="auth-switch" data-switch-auth="signin">Sign in</button></p>
-      </div>
-    </section>
-  </div>
 
   <script src="script.js"></script>
 </body>
