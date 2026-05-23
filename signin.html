@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In | NovaCraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card" aria-labelledby="signin-title">
+      <h1 id="signin-title">Welcome Back</h1>
+      <p>Apna NovaCraft account login karein aur dashboard access karein.</p>
+
+      <form id="signinForm" class="auth-form" novalidate>
+        <div class="input-group">
+          <label for="signinEmail">Email Address</label>
+          <input id="signinEmail" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="input-group">
+          <label for="signinPassword">Password</label>
+          <input id="signinPassword" name="password" type="password" autocomplete="current-password" required />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Sign In</button>
+      </form>
+
+      <p id="signinMessage" class="form-message" role="status" aria-live="polite"></p>
+
+      <p class="auth-foot">New user? <a href="signup.html">Create account</a></p>
+      <p class="auth-foot"><a href="index.html">Back to Home</a></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
