@@ -38,13 +38,49 @@ body.modal-open {
   padding: 0 0 80px;
 }
 
+.site-navbar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px clamp(12px, 3vw, 28px);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(53, 181, 154, 0.22), transparent 34%),
+    radial-gradient(circle at 88% 14%, rgba(255, 176, 90, 0.2), transparent 30%),
+    linear-gradient(145deg, #171d1b 0%, #101514 60%, #0f1312 100%);
+}
+
+.site-navbar {
+  width: min(1220px, 100%);
+  margin: 0 auto;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(193, 238, 227, 0.32);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(117, 224, 202, 0.2), transparent 45%),
+    radial-gradient(circle at 88% 84%, rgba(255, 190, 120, 0.16), transparent 48%),
+    linear-gradient(120deg, rgba(12, 20, 24, 0.62), rgba(8, 42, 36, 0.58));
+  box-shadow: 0 16px 30px rgba(6, 14, 12, 0.34);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
 .hero {
+<<<<<<< HEAD
   margin-top: 0;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding: 20px clamp(20px, 5vw, 68px) 78px;
   /* border-radius: var(--radius-xl); */
+=======
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 78px clamp(20px, 5vw, 68px);
+>>>>>>> origin/main
   background:
     radial-gradient(circle at 12% 18%, rgba(53, 181, 154, 0.22), transparent 34%),
     radial-gradient(circle at 88% 14%, rgba(255, 176, 90, 0.2), transparent 30%),
@@ -59,7 +95,11 @@ body.modal-open {
 .hero-nav {
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   flex: 1;
+=======
+  margin-bottom: 0;
+>>>>>>> origin/main
 }
 
 .hero-top {
@@ -127,6 +167,12 @@ body.modal-open {
   gap: 12px;
   flex-wrap: wrap;
   padding: 0;
+<<<<<<< HEAD
+=======
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+>>>>>>> origin/main
 }
 
 .hero-nav a {
@@ -602,6 +648,7 @@ body.modal-open {
 }
 
 @keyframes pulseGlow {
+
   0%,
   100% {
     box-shadow: 0 10px 22px rgba(13, 138, 114, 0.28);
@@ -613,6 +660,17 @@ body.modal-open {
 }
 
 @media (max-width: 900px) {
+  .site-navbar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+
+  .site-navbar .hero-logo,
+  .site-navbar .hero-cta-animated {
+    justify-self: center;
+  }
+
   .services-head {
     grid-template-columns: 1fr;
   }
@@ -635,6 +693,14 @@ body.modal-open {
 }
 
 @media (max-width: 640px) {
+  .site-navbar-wrap {
+    padding: 8px 10px;
+  }
+
+  .site-navbar {
+    padding: 10px;
+  }
+
   .page {
     padding: 0 0 44px;
   }
@@ -643,6 +709,7 @@ body.modal-open {
     padding: 18px 18px 48px;
   }
 
+<<<<<<< HEAD
   .hero-top {
     flex-direction: column;
     align-items: stretch;
@@ -658,6 +725,8 @@ body.modal-open {
     justify-content: flex-start;
   }
 
+=======
+>>>>>>> origin/main
   .services {
     margin-top: 0;
     padding: 24px 14px;
