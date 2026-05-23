@@ -479,86 +479,10 @@ body.modal-open {
   color: #9ed8ca;
 }
 
-<<<<<<< HEAD
-.about-novacraft {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding: clamp(56px, 9vw, 94px) clamp(20px, 5vw, 72px);
-  background:
-    radial-gradient(circle at 12% 10%, rgba(73, 198, 171, 0.16), transparent 34%),
-    radial-gradient(circle at 88% 86%, rgba(242, 176, 96, 0.14), transparent 36%),
-    linear-gradient(140deg, #f7f3eb 0%, #efe7da 100%);
-}
-
-.about-novacraft-inner {
-  width: min(1140px, 100%);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.about-copy h2 {
-  margin-top: 14px;
-  font-family: "Sora", sans-serif;
-  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
-  line-height: 1.15;
-  max-width: 18ch;
-}
-
-.about-copy p {
-  margin-top: 14px;
-  max-width: 58ch;
-  color: #5a5550;
-  font-size: 1.02rem;
-}
-
-.about-pillars {
-  display: grid;
-  gap: 14px;
-}
-
-.pillar {
-  padding: 18px;
-  border-radius: 16px;
-  border: 1px solid rgba(34, 33, 31, 0.1);
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 20px rgba(24, 29, 27, 0.08);
-}
-
-.pillar i {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(13, 138, 114, 0.12);
-  color: #0c6b5a;
-}
-
-.pillar h3 {
-  margin-top: 10px;
-  font-family: "Sora", sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.25;
-}
-
-.pillar p {
-  margin-top: 8px;
-  color: #5f5a53;
-  font-size: 0.98rem;
-}
-
-.auth-page {
-=======
 .auth-modal {
   position: fixed;
   inset: 0;
   z-index: 1000;
->>>>>>> origin/main
   display: grid;
   place-items: center;
   padding: 18px;
