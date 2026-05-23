@@ -11,32 +11,28 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-navbar-wrap">
-    <div class="site-navbar">
-      <a class="hero-logo" href="#hero" aria-label="NovaCraft Studio home">
-        <span class="hero-logo-mark">N</span>
-        <span>NovaCraft</span>
-      </a>
-
-      <nav class="hero-nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="signin.html">Sign In</a></li>
-          <li><a href="signup.html">Sign Up</a></li>
-        </ul>
-      </nav>
-
-      <a class="hero-cta-animated" href="#services">
-        <i class="fa-solid fa-bolt" aria-hidden="true"></i>
-        Start Project
-      </a>
-    </div>
-  </header>
-
   <main class="page">
     <section class="hero" id="hero">
+      <div class="hero-top">
+        <a class="hero-logo" href="#hero" aria-label="NovaCraft Studio home">
+          <span class="hero-logo-mark">N</span>
+          <span>NovaCraft</span>
+        </a>
+        <nav class="hero-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li data-auth="guest"><a href="#" data-open-auth="signin">Sign In</a></li>
+            <li data-auth="guest"><a href="#" data-open-auth="signup">Sign Up</a></li>
+            <li data-auth="user" class="hidden"><a href="#" id="logoutBtn">Logout</a></li>
+          </ul>
+        </nav>
+        <a class="hero-cta-animated" href="#services">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          Start Project
+        </a>
+      </div>
       <span class="eyebrow">Creative Digital Partner</span>
       <h1>Build a modern brand experience your audience remembers.</h1>
       <p>
@@ -45,7 +41,7 @@
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#services">Explore Services</a>
-        <a class="btn btn-secondary" href="signup.html">Book Free Consultation</a>
+        <a class="btn btn-secondary" href="#" data-open-auth="signup">Book Free Consultation</a>
       </div>
     </section>
 
@@ -109,136 +105,23 @@
           <span><strong>92%</strong> repeat client collaboration</span>
         </div>
 
-        <div class="reviews-marquee" aria-label="Customer reviews marquee">
-          <div class="reviews-track">
-            <article class="review-card">
-              <div class="review-stars">
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-              </div>
-              <p>
-                "Our new website feels premium and converts much better. Their process was clear,
-                fast, and extremely professional from start to launch."
-              </p>
-              <div class="review-meta">
-                <span class="reviewer">Ayesha R.</span>
-                <span class="company">BloomCart</span>
-              </div>
-            </article>
-
-            <article class="review-card">
-              <div class="review-stars">
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-              </div>
-              <p>
-                "They transformed our messy flow into a polished experience. Load speed improved,
-                bounce rate dropped, and leads increased within weeks."
-              </p>
-              <div class="review-meta">
-                <span class="reviewer">Hassan M.</span>
-                <span class="company">Nexora Labs</span>
-              </div>
-            </article>
-
-            <article class="review-card">
-              <div class="review-stars">
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-              </div>
-              <p>
-                "Design quality, communication, and delivery speed were all top-tier.
-                We now have a brand presence that finally matches our product quality."
-              </p>
-              <div class="review-meta">
-                <span class="reviewer">Sara K.</span>
-                <span class="company">OrbitPay</span>
-              </div>
-            </article>
-
-            <article class="review-card" aria-hidden="true">
-              <div class="review-stars">
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-              </div>
-              <p>
-                "Our new website feels premium and converts much better. Their process was clear,
-                fast, and extremely professional from start to launch."
-              </p>
-              <div class="review-meta">
-                <span class="reviewer">Ayesha R.</span>
-                <span class="company">BloomCart</span>
-              </div>
-            </article>
-
-            <article class="review-card" aria-hidden="true">
-              <div class="review-stars">
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-              </div>
-              <p>
-                "They transformed our messy flow into a polished experience. Load speed improved,
-                bounce rate dropped, and leads increased within weeks."
-              </p>
-              <div class="review-meta">
-                <span class="reviewer">Hassan M.</span>
-                <span class="company">Nexora Labs</span>
-              </div>
-            </article>
-
-            <article class="review-card" aria-hidden="true">
-              <div class="review-stars">
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-                <i class="fa-solid fa-star" aria-hidden="true"></i>
-              </div>
-              <p>
-                "Design quality, communication, and delivery speed were all top-tier.
-                We now have a brand presence that finally matches our product quality."
-              </p>
-              <div class="review-meta">
-                <span class="reviewer">Sara K.</span>
-                <span class="company">OrbitPay</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-novacraft" id="about-novacraft">
-      <div class="about-novacraft-inner">
-        <div class="about-copy">
-          <span class="eyebrow">About NovaCraft</span>
-          <h2>Design-Led Digital Studio Focused On Real Business Growth</h2>
-          <p>
-            NovaCraft helps startups and growing teams launch high-performing websites that look premium,
-            feel smooth, and convert better. We combine strategy, design systems, and fast frontend execution
-            to build digital products users trust.
-          </p>
-        </div>
-        <div class="about-pillars">
-          <article class="pillar">
-            <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
-            <h3>Strategic Craft</h3>
-            <p>Clear design direction aligned with your goals and audience behavior.</p>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <p>
+              "Our new website feels premium and converts much better. Their process was clear,
+              fast, and extremely professional from start to launch."
+            </p>
+            <div class="review-meta">
+              <span class="reviewer">Ayesha R.</span>
+              <span class="company">BloomCart</span>
+            </div>  
           </article>
           <article class="pillar">
             <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
@@ -254,6 +137,72 @@
       </div>
     </section>
   </main>
+
+  <div id="authModal" class="auth-modal" aria-hidden="true">
+    <button type="button" class="auth-modal-backdrop" data-close-auth aria-label="Close authentication popup"></button>
+    <section class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button type="button" class="auth-close" data-close-auth aria-label="Close">&times;</button>
+
+      <div class="auth-tabs" role="tablist" aria-label="Authentication tabs">
+        <button type="button" class="auth-tab active" data-auth-view="signin" role="tab" aria-selected="true">Sign In</button>
+        <button type="button" class="auth-tab" data-auth-view="signup" role="tab" aria-selected="false">Sign Up</button>
+      </div>
+
+      <div class="auth-panel" data-auth-panel="signin">
+        <h2 id="authTitle">Welcome Back</h2>
+        <p class="auth-subtext">Login karein aur apna project dashboard access karein.</p>
+
+        <form id="signinForm" class="auth-form" novalidate>
+          <div class="input-group">
+            <label for="signinEmail">Email Address</label>
+            <input id="signinEmail" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="input-group">
+            <label for="signinPassword">Password</label>
+            <input id="signinPassword" name="password" type="password" autocomplete="current-password" required />
+          </div>
+
+          <button class="btn btn-primary" type="submit">Sign In</button>
+        </form>
+
+        <p id="signinMessage" class="form-message" role="status" aria-live="polite"></p>
+        <p class="auth-foot">New user? <button type="button" class="auth-switch" data-switch-auth="signup">Create account</button></p>
+      </div>
+
+      <div class="auth-panel hidden" data-auth-panel="signup">
+        <h2>Create Account</h2>
+        <p class="auth-subtext">NovaCraft par account bana kar journey start karein.</p>
+
+        <form id="signupForm" class="auth-form" novalidate>
+          <div class="input-group">
+            <label for="signupName">Full Name</label>
+            <input id="signupName" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="signupEmail">Email Address</label>
+            <input id="signupEmail" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="input-group">
+            <label for="signupPassword">Password</label>
+            <input id="signupPassword" name="password" type="password" minlength="6" autocomplete="new-password" required />
+          </div>
+
+          <div class="input-group">
+            <label for="signupConfirmPassword">Confirm Password</label>
+            <input id="signupConfirmPassword" name="confirmPassword" type="password" minlength="6" autocomplete="new-password" required />
+          </div>
+
+          <button class="btn btn-primary" type="submit">Sign Up</button>
+        </form>
+
+        <p id="signupMessage" class="form-message" role="status" aria-live="polite"></p>
+        <p class="auth-foot">Already have an account? <button type="button" class="auth-switch" data-switch-auth="signin">Sign in</button></p>
+      </div>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>
