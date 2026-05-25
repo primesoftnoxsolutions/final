@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<hea
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NovaCraft Studio</title>
@@ -14,6 +14,7 @@
       --ink: #22211f;
       --muted: #5f5a53;
       --accent: #0d8a72;
+      --accent-dark: #0c7762;
       --ring: rgba(13, 138, 114, 0.25);
       --shadow: 0 18px 40px rgba(24, 29, 27, 0.12);
       --radius-xl: 28px;
@@ -24,6 +25,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -37,10 +42,101 @@
       line-height: 1.6;
     }
 
+    a {
+      color: inherit;
+    }
+
     .page {
       width: min(1120px, 92%);
       margin: 0 auto;
       padding: 28px 0 80px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      margin-bottom: 18px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      animation: rise 0.7s ease-out both;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: "Sora", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      box-shadow: 0 12px 22px rgba(13, 138, 114, 0.25);
+      font-size: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--ink);
+      background: rgba(13, 138, 114, 0.08);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 12px 26px rgba(13, 138, 114, 0.22);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(13, 138, 114, 0.28);
+      outline: none;
     }
 
     .hero {
@@ -104,7 +200,7 @@
 
     .btn-primary {
       color: #fff;
-      background: linear-gradient(120deg, #0d8a72, #0c7762);
+      background: linear-gradient(120deg, var(--accent), var(--accent-dark));
       box-shadow: 0 12px 26px rgba(13, 138, 114, 0.28);
     }
 
@@ -114,11 +210,14 @@
       border: 1px solid rgba(34, 33, 31, 0.12);
     }
 
-    .btn:hover {
+    .btn:hover,
+    .btn:focus-visible {
       transform: translateY(-2px);
+      outline: none;
     }
 
-    .services {
+    .services,
+    .contact {
       margin-top: 34px;
       padding: 48px clamp(20px, 4vw, 46px);
       border-radius: var(--radius-xl);
@@ -129,13 +228,15 @@
       animation: rise 0.8s ease-out 0.18s both;
     }
 
-    .services-head h2 {
+    .services-head h2,
+    .contact h2 {
       font-family: "Sora", sans-serif;
       font-size: clamp(1.6rem, 4vw, 2.4rem);
       line-height: 1.15;
     }
 
-    .services-head p {
+    .services-head p,
+    .contact p {
       margin-top: 10px;
       color: var(--muted);
       max-width: 65ch;
@@ -182,6 +283,17 @@
       text-transform: uppercase;
     }
 
+    .contact {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
     @keyframes rise {
       from {
         opacity: 0;
@@ -201,14 +313,31 @@
 
     @media (max-width: 640px) {
       .page {
+        width: min(100%, 92%);
         padding: 18px 0 44px;
+      }
+
+      .site-header {
+        top: 10px;
+        border-radius: 24px;
+        padding: 14px;
+      }
+
+      .nav {
+        justify-content: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 8px;
       }
 
       .hero {
         padding: 48px 18px;
       }
 
-      .services {
+      .services,
+      .contact {
         padding: 36px 18px;
       }
 
@@ -220,6 +349,21 @@
 </head>
 <body>
   <main class="page">
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#hero">
+          <span class="brand-mark">N</span>
+          <span>NovaCraft Studio</span>
+        </a>
+        <div class="nav-links">
+          <a href="#hero">Home</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a class="nav-cta" href="#contact">Get Started</a>
+      </nav>
+    </header>
+
     <section class="hero" id="hero">
       <span class="eyebrow">Creative Digital Partner</span>
       <h1>Build a modern brand experience your audience remembers.</h1>
@@ -229,7 +373,7 @@
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#services">Explore Services</a>
-        <a class="btn btn-secondary" href="#">Book Free Consultation</a>
+        <a class="btn btn-secondary" href="#contact">Book Free Consultation</a>
       </div>
     </section>
 
@@ -260,8 +404,18 @@
         </article>
       </div>
     </section>
+
+    <section class="contact" id="contact">
+      <h2>Ready to talk about your next project?</h2>
+      <p>
+        If you want a polished website, better conversion flow, or a fresh digital brand presence,
+        we can help you map out the next step.
+      </p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:hello@novacraftstudio.com">Email Us</a>
+        <a class="btn btn-secondary" href="#hero">Back to Top</a>
+      </div>
+    </section>
   </main>
 </body>
-</html>
->
 </html>
