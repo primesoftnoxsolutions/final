@@ -7,376 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-main: #f4f1ea;
-      --bg-card: rgba(255, 255, 255, 0.8);
-      --ink: #22211f;
-      --muted: #5f5a53;
-      --accent: #0d8a72;
-      --accent-dark: #0c7762;
-      --ring: rgba(13, 138, 114, 0.25);
-      --shadow: 0 18px 40px rgba(24, 29, 27, 0.12);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Manrope", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 5% 8%, rgba(244, 162, 89, 0.38), transparent 30%),
-        radial-gradient(circle at 92% 12%, rgba(13, 138, 114, 0.3), transparent 26%),
-        linear-gradient(135deg, #fdfbf7 0%, #f4f1ea 100%);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-      padding: 28px 0 80px;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 16px;
-      z-index: 20;
-      margin-bottom: 18px;
-      padding: 14px 18px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(16, 18, 22, 0.82), rgba(22, 26, 32, 0.7));
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 18px 40px rgba(10, 12, 16, 0.22);
-      backdrop-filter: blur(12px);
-      animation: rise 0.7s ease-out both;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      font-family: "Sora", sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      color: #fff;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      box-shadow: 0 12px 22px rgba(13, 138, 114, 0.25);
-      font-size: 1rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.76);
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 8px 12px;
-      border-radius: 999px;
-      transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
-      outline: none;
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      text-decoration: none;
-      color: #fff;
-      background: linear-gradient(120deg, var(--accent), var(--accent-dark));
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-weight: 800;
-      box-shadow: 0 12px 26px rgba(13, 138, 114, 0.22);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .nav-cta:hover,
-    .nav-cta:focus-visible {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 32px rgba(13, 138, 114, 0.28);
-      outline: none;
-    }
-
-    .hero {
-      margin-top: 10px;
-      padding: 78px clamp(20px, 5vw, 68px);
-      border-radius: var(--radius-xl);
-      background:
-        radial-gradient(circle at 12% 18%, rgba(13, 138, 114, 0.34), transparent 28%),
-        radial-gradient(circle at 86% 10%, rgba(244, 162, 89, 0.2), transparent 24%),
-        linear-gradient(135deg, #11151b 0%, #171c24 48%, #0d1117 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 22px 50px rgba(10, 12, 16, 0.2);
-      backdrop-filter: blur(8px);
-      animation: rise 0.8s ease-out both;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: auto 6% 8% auto;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(13, 138, 114, 0.22), transparent 70%);
-      pointer-events: none;
-      filter: blur(4px);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      color: #f5f7fa;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.07);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .hero h1 {
-      margin-top: 18px;
-      font-family: "Sora", sans-serif;
-      font-size: clamp(2rem, 5vw, 4rem);
-      line-height: 1.08;
-      max-width: 11.5ch;
-    }
-
-    .hero p {
-      margin-top: 16px;
-      max-width: 56ch;
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      color: rgba(245, 247, 250, 0.74);
-    }
-
-    .hero-actions {
-      margin-top: 30px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      text-decoration: none;
-      border-radius: 14px;
-      padding: 12px 22px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .btn-primary {
-      color: #fff;
-      background: linear-gradient(120deg, var(--accent), var(--accent-dark));
-      box-shadow: 0 12px 26px rgba(13, 138, 114, 0.28);
-    }
-
-    .btn-secondary {
-      color: #2f2d29;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(34, 33, 31, 0.12);
-    }
-
-    .hero .btn-secondary {
-      color: #f5f7fa;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-    }
-
-    .hero .btn-secondary:hover,
-    .hero .btn-secondary:focus-visible {
-      background: rgba(255, 255, 255, 0.14);
-    }
-
-    .btn:hover,
-    .btn:focus-visible {
-      transform: translateY(-2px);
-      outline: none;
-    }
-
-    .services,
-    .contact {
-      margin-top: 34px;
-      padding: 48px clamp(20px, 4vw, 46px);
-      border-radius: var(--radius-xl);
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(8px);
-      box-shadow: var(--shadow);
-      animation: rise 0.8s ease-out 0.18s both;
-    }
-
-    .services-head h2,
-    .contact h2 {
-      font-family: "Sora", sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      line-height: 1.15;
-    }
-
-    .services-head p,
-    .contact p {
-      margin-top: 10px;
-      color: var(--muted);
-      max-width: 65ch;
-    }
-
-    .grid {
-      margin-top: 26px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(34, 33, 31, 0.08);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--ring);
-      box-shadow: 0 16px 30px rgba(18, 24, 22, 0.12);
-    }
-
-    .card h3 {
-      font-family: "Sora", sans-serif;
-      font-size: 1.16rem;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .card strong {
-      display: inline-block;
-      margin-top: 12px;
-      color: var(--accent);
-      font-size: 0.88rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .contact {
-      display: grid;
-      gap: 16px;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(22px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .page {
-        width: min(100%, 92%);
-        padding: 18px 0 44px;
-      }
-
-      .site-header {
-        top: 10px;
-        border-radius: 24px;
-        padding: 14px;
-      }
-
-      .nav {
-        justify-content: center;
-      }
-
-      .nav-links {
-        justify-content: center;
-        gap: 8px;
-      }
-
-      .hero {
-        padding: 48px 18px;
-      }
-
-      .services,
-      .contact {
-        padding: 36px 18px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="page">
@@ -396,6 +28,102 @@
     </header>
 
     <section class="hero" id="hero">
+      <div class="hero-top">
+        <a class="hero-logo" href="#hero" aria-label="NovaCraft Studio home">
+          <span class="hero-logo-mark">N</span>
+          <span>NovaCraft</span>
+        </a>
+        <nav class="hero-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li data-auth="guest"><a href="#" data-open-auth="signin">Sign In</a></li>
+            <li data-auth="guest"><a href="#" data-open-auth="signup">Sign Up</a></li>
+            <li data-auth="user" class="hidden"><a href="#" id="logoutBtn">Logout</a></li>
+          </ul>
+        </nav>
+        <a class="hero-cta-animated" href="#services">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          Start Project
+        </a>
+      </div>
+<<<<<<< HEAD
+  <header class="site-navbar-wrap">
+    <div class="site-navbar">
+      <a class="hero-logo" href="#hero" aria-label="NovaCraft Studio home">
+        <span class="hero-logo-mark">N</span>
+        <span>NovaCraft</span>
+      </a>
+
+      <nav class="hero-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="signin.html">Sign In</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+      </nav>
+
+      <a class="hero-cta-animated" href="#services">
+        <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+        Start Project
+      </a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero" id="hero">
+      <div class="hero-top">
+        <a class="hero-logo" href="#hero" aria-label="NovaCraft Studio home">
+          <span class="hero-logo-mark">N</span>
+          <span>NovaCraft</span>
+        </a>
+        <nav class="hero-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li data-auth="guest"><a href="#" data-open-auth="signin">Sign In</a></li>
+            <li data-auth="guest"><a href="#" data-open-auth="signup">Sign Up</a></li>
+            <li data-auth="user" class="hidden"><a href="#" id="logoutBtn">Logout</a></li>
+          </ul>
+        </nav>
+        <a class="hero-cta-animated" href="#services">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          Start Project
+        </a>
+      </div>
+<<<<<<< HEAD
+  <header class="site-navbar-wrap">
+    <div class="site-navbar">
+      <a class="hero-logo" href="#hero" aria-label="NovaCraft Studio home">
+        <span class="hero-logo-mark">N</span>
+        <span>NovaCraft</span>
+      </a>
+
+      <nav class="hero-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="signin.html">Sign In</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+      </nav>
+
+      <a class="hero-cta-animated" href="#services">
+        <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+        Start Project
+      </a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero" id="hero">
+=======
+>>>>>>> 6e412e68df9b88de32d49a896025d89b596a0b76
       <span class="eyebrow">Creative Digital Partner</span>
       <h1>Build a modern brand experience your audience remembers.</h1>
       <p>
@@ -404,49 +132,281 @@
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#services">Explore Services</a>
-        <a class="btn btn-secondary" href="#contact">Book Free Consultation</a>
+        <a class="btn btn-secondary" href="#" data-open-auth="signup">Book Free Consultation</a>
       </div>
     </section>
 
     <section class="services" id="services">
-      <div class="services-head">
-        <h2>Services That Move Your Business Forward</h2>
-        <p>
-          We combine design, technology, and growth thinking so your website is not just beautiful,
-          but also focused on conversions and real business impact.
-        </p>
-      </div>
+      <div class="services-inner">
+        <div class="services-head">
+          <h2>Services Built To Grow Your Brand Faster</h2>
+          <p>
+            We craft focused service blocks that blend design quality, performance,
+            and conversion intent so every visitor journey feels smooth and clear.
+          </p>
+        </div>
 
-      <div class="grid">
-        <article class="card">
-          <h3>Brand-First UI/UX Design</h3>
-          <p>Complete interface systems that match your identity and guide users to take action naturally.</p>
-          <strong>Design System</strong>
-        </article>
-        <article class="card">
-          <h3>High-Performance Web Development</h3>
-          <p>Responsive websites with clean code, smooth interactions, and optimized loading speed.</p>
-          <strong>Fast & Scalable</strong>
-        </article>
-        <article class="card">
-          <h3>Conversion Growth Optimization</h3>
-          <p>Landing page improvements, messaging clarity, and data-led tweaks to increase qualified leads.</p>
-          <strong>ROI Focused</strong>
-        </article>
+        <div class="grid">
+          <article class="card">
+            <div class="card-tools">
+              <i class="fa-brands fa-figma" aria-hidden="true"></i>
+              <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+            </div>
+            <h3>Strategy-Led UI Design</h3>
+            <p>Purposeful layouts and visual hierarchy that communicate value instantly and build trust fast.</p>
+            <strong>Clarity Driven</strong>
+          </article>
+          <article class="card">
+            <div class="card-tools">
+              <i class="fa-brands fa-html5" aria-hidden="true"></i>
+              <i class="fa-brands fa-css3-alt" aria-hidden="true"></i>
+              <i class="fa-brands fa-js" aria-hidden="true"></i>
+            </div>
+            <h3>Modern Frontend Build</h3>
+            <p>Responsive, lightweight interfaces engineered for speed, stability, and seamless interaction.</p>
+            <strong>Performance First</strong>
+          </article>
+          <article class="card">
+            <div class="card-tools">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+              <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+              <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+            </div>
+            <h3>Conversion Flow Tuning</h3>
+            <p>CTA placement, message refinement, and friction removal to turn more visits into real enquiries.</p>
+            <strong>Results Focused</strong>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <h2>Ready to talk about your next project?</h2>
-      <p>
-        If you want a polished website, better conversion flow, or a fresh digital brand presence,
-        we can help you map out the next step.
-      </p>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="mailto:hello@novacraftstudio.com">Email Us</a>
-        <a class="btn btn-secondary" href="#hero">Back to Top</a>
+    <section class="reviews" id="reviews">
+      <div class="reviews-inner">
+        <div class="reviews-head">
+          <h2>What Our Customers Say About Working With NovaCraft</h2>
+          <p>
+            Real client feedback from teams who trusted us with design, development,
+            and conversion-focused improvements across their digital products.
+          </p>
+        </div>
+        <div class="reviews-summary">
+          <span><strong>4.9/5</strong> average client rating</span>
+          <span><strong>120+</strong> completed design & web projects</span>
+          <span><strong>92%</strong> repeat client collaboration</span>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <p>
+              "Our new website feels premium and converts much better. Their process was clear,
+              fast, and extremely professional from start to launch."
+            </p>
+            <div class="review-meta">
+              <span class="reviewer">Ayesha R.</span>
+              <span class="company">BloomCart</span>
+            </div>  
+          </article>
+
+            <article class="review-card">
+              <div class="review-stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
+              <p>
+                "They transformed our messy flow into a polished experience. Load speed improved,
+                bounce rate dropped, and leads increased within weeks."
+              </p>
+              <div class="review-meta">
+                <span class="reviewer">Hassan M.</span>
+                <span class="company">Nexora Labs</span>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
+              <p>
+                "Design quality, communication, and delivery speed were all top-tier.
+                We now have a brand presence that finally matches our product quality."
+              </p>
+              <div class="review-meta">
+                <span class="reviewer">Sara K.</span>
+                <span class="company">OrbitPay</span>
+              </div>
+            </article>
+
+            <article class="review-card" aria-hidden="true">
+              <div class="review-stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
+              <p>
+                "Our new website feels premium and converts much better. Their process was clear,
+                fast, and extremely professional from start to launch."
+              </p>
+              <div class="review-meta">
+                <span class="reviewer">Ayesha R.</span>
+                <span class="company">BloomCart</span>
+              </div>
+            </article>
+
+            <article class="review-card" aria-hidden="true">
+              <div class="review-stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
+              <p>
+                "They transformed our messy flow into a polished experience. Load speed improved,
+                bounce rate dropped, and leads increased within weeks."
+              </p>
+              <div class="review-meta">
+                <span class="reviewer">Hassan M.</span>
+                <span class="company">Nexora Labs</span>
+              </div>
+            </article>
+
+            <article class="review-card" aria-hidden="true">
+              <div class="review-stars">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+              </div>
+              <p>
+                "Design quality, communication, and delivery speed were all top-tier.
+                We now have a brand presence that finally matches our product quality."
+              </p>
+              <div class="review-meta">
+                <span class="reviewer">Sara K.</span>
+                <span class="company">OrbitPay</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-novacraft" id="about-novacraft">
+      <div class="about-novacraft-inner">
+        <div class="about-copy">
+          <span class="eyebrow">About NovaCraft</span>
+          <h2>Design-Led Digital Studio Focused On Real Business Growth</h2>
+          <p>
+            NovaCraft helps startups and growing teams launch high-performing websites that look premium,
+            feel smooth, and convert better. We combine strategy, design systems, and fast frontend execution
+            to build digital products users trust.
+          </p>
+        </div>
+        <div class="about-pillars">
+          <article class="pillar">
+            <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+            <h3>Strategic Craft</h3>
+            <p>Clear design direction aligned with your goals and audience behavior.</p>
+          </article>
+          <article class="pillar">
+            <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
+            <h3>Performance Mindset</h3>
+            <p>Lightweight interfaces optimized for speed, accessibility, and stability.</p>
+          </article>
+          <article class="pillar">
+            <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
+            <h3>Long-Term Partnership</h3>
+            <p>Continuous improvement support after launch to sustain measurable growth.</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
+
+  <div id="authModal" class="auth-modal" aria-hidden="true">
+    <button type="button" class="auth-modal-backdrop" data-close-auth aria-label="Close authentication popup"></button>
+    <section class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button type="button" class="auth-close" data-close-auth aria-label="Close">&times;</button>
+
+      <div class="auth-tabs" role="tablist" aria-label="Authentication tabs">
+        <button type="button" class="auth-tab active" data-auth-view="signin" role="tab" aria-selected="true">Sign In</button>
+        <button type="button" class="auth-tab" data-auth-view="signup" role="tab" aria-selected="false">Sign Up</button>
+      </div>
+
+      <div class="auth-panel" data-auth-panel="signin">
+        <h2 id="authTitle">Welcome Back</h2>
+        <p class="auth-subtext">Login karein aur apna project dashboard access karein.</p>
+
+        <form id="signinForm" class="auth-form" novalidate>
+          <div class="input-group">
+            <label for="signinEmail">Email Address</label>
+            <input id="signinEmail" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="input-group">
+            <label for="signinPassword">Password</label>
+            <input id="signinPassword" name="password" type="password" autocomplete="current-password" required />
+          </div>
+
+          <button class="btn btn-primary" type="submit">Sign In</button>
+        </form>
+
+        <p id="signinMessage" class="form-message" role="status" aria-live="polite"></p>
+        <p class="auth-foot">New user? <button type="button" class="auth-switch" data-switch-auth="signup">Create account</button></p>
+      </div>
+
+      <div class="auth-panel hidden" data-auth-panel="signup">
+        <h2>Create Account</h2>
+        <p class="auth-subtext">NovaCraft par account bana kar journey start karein.</p>
+
+        <form id="signupForm" class="auth-form" novalidate>
+          <div class="input-group">
+            <label for="signupName">Full Name</label>
+            <input id="signupName" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="signupEmail">Email Address</label>
+            <input id="signupEmail" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="input-group">
+            <label for="signupPassword">Password</label>
+            <input id="signupPassword" name="password" type="password" minlength="6" autocomplete="new-password" required />
+          </div>
+
+          <div class="input-group">
+            <label for="signupConfirmPassword">Confirm Password</label>
+            <input id="signupConfirmPassword" name="confirmPassword" type="password" minlength="6" autocomplete="new-password" required />
+          </div>
+
+          <button class="btn btn-primary" type="submit">Sign Up</button>
+        </form>
+
+        <p id="signupMessage" class="form-message" role="status" aria-live="polite"></p>
+        <p class="auth-foot">Already have an account? <button type="button" class="auth-switch" data-switch-auth="signin">Sign in</button></p>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
